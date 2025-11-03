@@ -39,6 +39,7 @@ function guessLetter() {
 
 function updatePage() {
     var clueString = "";
+    wincheck = true;
    
     for (var i = 0; i < word.length; i++) {
         var currentLetter = word.charAt(i);
@@ -48,7 +49,7 @@ function updatePage() {
         } 
         else {
             clueString += "_ ";
-            
+            wincheck = false;
         }
     }
 
@@ -67,7 +68,14 @@ image.src = "images/hangman"+ guess_count + ".gif";
     document.getElementById("clue").innerHTML = clueString;
 
 
-if (guess_count === 0){
+ if (wincheck){
+
+     document.getElementById("guesses").innerHTML = "YOU WIN";
+
+
+}
+
+else if (guess_count === 0){
 
      document.getElementById("guesses").innerHTML = "YOU LOSE";
 
