@@ -50,7 +50,7 @@ function guessLetter() {
 
 function updatePage() {
     var clueString = "";
-    wincheck = true;
+    var wincheck = true;
    
     for (var i = 0; i < word.length; i++) {
         var currentLetter = word.charAt(i);
@@ -86,10 +86,10 @@ image.src = "images/hangman"+ guess_count + ".gif";
 
 }
 
-else if (guess_count === 0){
+else if (guess_count === 0 && !wincheck){
 
      document.getElementById("guesses").innerHTML = "YOU LOSE";
-        
+
 
 }
 
