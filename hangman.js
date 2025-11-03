@@ -4,24 +4,35 @@ var MAX_GUESSES = 6;
 var word = "";
 var guesses = "";
 var guess_count = MAX_GUESSES;
-var lost = false;
+var start = false;
+
 
 function newGame() {
     var randomIndex = parseInt(Math.random() * POSSIBLE_WORDS.length);
     word = POSSIBLE_WORDS[randomIndex];
     guesses = "";
     guess_count = MAX_GUESSES;
-    lost = false;
+    start = true;
+
     updatePage();
 }
 
 function guessLetter() {
+
+ if (word === "") {
+    
+         document.getElementById("guesses").innerHTML = "start a new game";
+
+         document.getElementById("guess").value = "";
+        return;
+    }
+
     var input = document.getElementById("guess");
     var letter = input.value;
     input.value = "";
     
 
-        if (guesses.indexOf(letter) >= 0){
+        if (guesses.indexOf(letter) >= 0 && start){
             document.getElementById("guesses").innerHTML = "letter already guessed";
             return;
         }
@@ -78,7 +89,7 @@ image.src = "images/hangman"+ guess_count + ".gif";
 else if (guess_count === 0){
 
      document.getElementById("guesses").innerHTML = "YOU LOSE";
-
+        
 
 }
 
